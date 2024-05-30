@@ -2,9 +2,8 @@
   hosts: all
   become_method: su
   become: true
-
   tasks:
-    - name: install nginx
+    - name: installing nginx
       ansible.builtin.dnf:
         name: nginx
         state: present
