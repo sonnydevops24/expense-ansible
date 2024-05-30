@@ -1,6 +1,6 @@
 - name: frontend playbook
   hosts: all
-  become_method: su
+  #become_method: #su
   become: true
   tasks:
     - name: installing nginx
