@@ -1,0 +1,40 @@
+# sourcw common.sh
+# rm -rf /tmp/expense.log
+# if [ -z "$1" ]; then
+ #   echo "INPUT MySQL password is Missing"
+ #   exit 1
+# fi
+
+# HEADING Installing MysQL server
+# dnf install mysql-server -y &>>/tmp/expense.log
+# STAT $?
+
+#HEADING Start nginx service
+# systemctl enable mysqld &>>/emp/expense.log
+# systemctl start mysqld &>>/tmp/expense.log
+# STAT $?
+
+# HEADING set Root password
+# mysql_secure_installation --set-pass $1 &>>/tmp/expense.log
+# STAT $?
+
+- name: MysQL playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: setup prompt
+      ansible.builtin.shell: set-prompt mysql
+
+    - name: installing mysql server
+      ansible.builtin.dnf:
+        name: mysql-server
+        state: present
+    - name: start mysql service
+      ansible.builtin.systemd_service:
+        name: mysqld
+        state: restarted
+        enable: true
+    - name: set Root password
+      ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
+
+
