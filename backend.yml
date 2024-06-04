@@ -18,10 +18,11 @@
       ansible.builtin.dnf:
        name: expense
 
-    - name: copy Backend service file
-      ansible.builtin.copy:
-      src: backend.service
-      dest: /etc/systemd/system/backend.service
+
+    -  name: copy Backend service file
+       ansible.builtin.copy:
+       src: backend.service
+       dest: /etc/systemd/system/backend.service
 
     - name: Delete Existing Application Dictionary
       ansible.builtin.file:
