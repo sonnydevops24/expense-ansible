@@ -1,4 +1,4 @@
-name: Backend playbook
+-name: Backend playbook
 hosts: all
 become: true
 tasks:
