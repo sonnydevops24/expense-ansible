@@ -1,7 +1,7 @@
--name: Backend playbook
-hosts: all
-become: true
-tasks:
+- name: Backend playbook
+  hosts: all
+  become: true
+  tasks:
   - name: set prompt
     ansible.builtin.shell: set-prompt backend
   - name: Disable Nodejs Default version
