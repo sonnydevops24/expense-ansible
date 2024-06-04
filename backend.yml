@@ -25,7 +25,7 @@
        src: backend.service
        dest: /etc/systemd/system/backend.service
 
-    - mame: Delete Existing Application Dictionary
+    - name: Delete Existing Application Dictionary
       ansible.builtin.file:
        name: /app
       state: dictionary
