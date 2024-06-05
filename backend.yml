@@ -27,8 +27,8 @@
 
     - name: Delete Existing Application Dictionary
       ansible.builtin.file:
-       name: /app
-       state: absent
+      name: /app
+      state: absent
     - name: create Application Directory
       ansible.builtin.file:
        name: /app
