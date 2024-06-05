@@ -3,53 +3,53 @@
   become: true
   tasks:
      - name: set prompt
-      ansible.builtin.shell: set-prompt backend
+       ansible.builtin.shell: set-prompt backend
      - name: Disable Nodejs Default version
-      ansible.builtin.shell: dnf disable nodejs -y
+       ansible.builtin.shell: dnf disable nodejs -y
      - name: Enable Nodejs 20 version
-      ansible.builtin.shell: dnf module enable nodejs:20 -y
+       ansible.builtin.shell: dnf module enable nodejs:20 -y
 
      - name: Install nodejs
-      ansible.builtin.dnf:
+       ansible.builtin.dnf:
        name: nodejs
        state: present
 
      - name: Add Expense user
-      ansible.builtin.dnf:
+       ansible.builtin.dnf:
 
        name: expense
 
      - name: copy Backend service file
 
-      ansible.builtin.copy:
+       ansible.builtin.copy:
        src: backend.service
        dest: /etc/systemd/system/backend.service
 
      - name: Delete Existing Application Dictionary
-      ansible.builtin.file:
-      name: /app
-      state: absent
+       ansible.builtin.file:
+       name: /app
+       state: absent
 
      - name: create Application Directory
-      ansible.builtin.file:
+       ansible.builtin.file:
        name: /app
-      state: directory
+       state: directory
      - name: Download & Extract Backend code
-      ansible.builtin.unarchive:
-      src: https://expense.artifacts.s3.amazon.com/expense-frontend-v2.zip
-      dest: /app
-      remote_src: true
+       ansible.builtin.unarchive:
+       src: https://expense.artifacts.s3.amazon.com/expense-frontend-v2.zip
+       dest: /app
+       remote_src: true
 
      - name: Download nodejs App Dependencies
-      community.builtin.npm:
-      path: /app
+       community.builtin.npm:
+       path: /app
 
      - name: Install MysQL Client
-      ansible.builtin.dnf:
-      state: present
+       ansible.builtin.dnf:
+       state: present
 
      - name: Load Schema
-      community.mysql.mysql_db:
+       community.mysql.mysql_db:
        state: import
        name: all
        target: /app/schema/backend.sql
@@ -58,7 +58,7 @@
        login_hosts: 172.31.20.169
 
      - name: start Backend service
-      ansible.builtin.systemd_service:
+       ansible.builtin.systemd_service:
        name: backend
        state: restarted
        enabled: true
