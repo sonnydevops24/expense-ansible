@@ -14,8 +14,8 @@
         name: nodejs
         state: present
 
-    - name: Add EXpense User
-      ansible.builtin.dnf:
+    -  name: Add EXpense User
+       ansible.builtin.dnf:
        name: expense
 
     - name: copy backend service file
