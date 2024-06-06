@@ -14,14 +14,14 @@
         name: nodejs
         state: present
 
-    -  name: Add EXpense User
-       ansible.builtin.dnf:
-       name: expense
+    -   name: Add EXpense User
+        ansible.builtin.dnf:
+        name: expense
 
-    - name: copy backend service file
-      ansible.builtin.copy:
-      src: backend.service
-      dest: /etc/systemd/system/backend.service
+    -   name: copy backend service file
+        ansible.builtin.copy:
+        src: backend.service
+        dest: /etc/systemd/system/backend.service
 
     - name: Delete Existing Application Dictionary
       ansible.builtin.file:
