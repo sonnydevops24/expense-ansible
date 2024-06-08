@@ -15,7 +15,7 @@
 
     - name: Add Expense user
       ansible.builtin.dnf:
-        name: expense
+      name:  expense
     - name: copy backend service file
       ansible.builtin.copy:
         src: backend.service
