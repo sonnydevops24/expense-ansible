@@ -31,6 +31,7 @@
       ansible.builtin.file:
         name: /app
         state: directory
+
     - name: Download & Extract Backend code
       ansible.builtin.unarchive:
         src: https://expense.artifacts.s3.amazon.com/expense-frontend-v2.zip
