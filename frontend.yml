@@ -1,12 +1,11 @@
 - name: frontend playbook
   hosts: all
-  #become_method: #su
   become: true
   tasks:
-    - name: installing nginx
+      name: installing nginx
       ansible.builtin.dnf:
       state: present
-    - name: copy expense config file
+      name: copy expense config file
       ansible.builtin.copy:
       src: expense.conf
       dest: /etc/nginx/default.d/expense.conf
