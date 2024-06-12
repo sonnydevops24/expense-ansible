@@ -2,10 +2,10 @@
   hosts: all
   become: true
   tasks:
-      name: installing nginx
-      ansible.builtin.dnf:
+   - name: installing nginx
+    ansible.builtin.dnf:
       state: present
-      name: copy expense config file
-      ansible.builtin.copy:
+   -name: copy expense config file
+  ansible.builtin.copy:
       src: expense.conf
       dest: /etc/nginx/default.d/expense.conf
